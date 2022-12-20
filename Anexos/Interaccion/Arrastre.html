@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <script src='https://create3000.github.io/code/x_ite/latest/x_ite.min.js'></script>
+        <style> x3d-canvas { width: 200px; height: 400px;} </style>
+    </head>
+    <body>
+        <x3d-canvas>
+            <X3D profile='Immersive'>
+                <Scene>
+                    <Group>
+                        <PlaneSensor DEF='Muevepeon' axisRotation =  '1 0 0 -1.57'></PlaneSensor>
+                        <Transform DEF='peon'>
+                           <Shape DEF= 'Caja'>
+                               <Appearance><Material diffuseColor = '1 0 0'></Material></Appearance>
+                               <Box></Box>
+                           </Shape>    
+                        </Transform>
+                      </Group>
+                      
+                      <Group>
+                        <CylinderSensor DEF='Muevepeon2' axisRotation =  '1 0 0 0'></CylinderSensor>
+                        <Transform DEF='peon2'  translation = '0 3 0' >
+                           <Shape USE= 'Caja'></Shape>   
+                         </Transform>
+                      </Group>
+                
+                      <Group>
+                        <SphereSensor DEF='Muevepeon3'></SphereSensor>
+                          <Transform DEF='peon3'  translation = '0 -3 0' >
+                            <Shape USE= 'Caja'></Shape>   
+                          </Transform>
+                      </Group>
+                
+                      <ROUTE fromNode='Muevepeon' fromField='translation_changed' toNode='peon' toField='set_translation'></ROUTE>
+                      <ROUTE fromNode='Muevepeon2' fromField='rotation_changed' toNode='peon2' toField='set_rotation'></ROUTE>
+                      <ROUTE fromNode='Muevepeon3' fromField='rotation_changed' toNode='peon3' toField='set_rotation'></ROUTE>
+                </Scene>
+            </X3D>
+        </x3d-canvas>
+    </body>
+</html>
