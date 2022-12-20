@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'/>
+    <script src='https://create3000.github.io/code/x_ite/latest/x_ite.min.js'></script>
+    <style> x3d-canvas { width: 400px; height: 200px;} </style>
+  </head>
+  <body>
+    <x3d-canvas>
+      <X3D profile='Immersive'>
+        <Scene>
+          <Viewpoint description = 'vista panoramica' orientation = '1 0 0 -0.35' position = '0 20 40'></Viewpoint>
+          <Transform translation = '0 0.5 15'>
+              <Shape>
+                <Appearance>
+                  <Material></Material>
+                </Appearance>
+                <Text string = '"TRES EN RAYA"'>
+                  <FontStyle justify = '"MIDDLE"' style = 'BOLD' size = '4.2'></FontStyle>
+                </Text>
+              </Shape>
+            </Transform>
+            <Shape>
+              <Appearance>
+                <Material diffuseColor = '1 1 1'></Material> 
+                <ImageTexture url = '"texturas/3enraya.png"'></ImageTexture> -->
+              </Appearance>
+              <Box size = '30 0.5 30'></Box>
+            </Shape>
+        </Scene>
+      </X3D>
+    </x3d-canvas>
+  </body>
+</html>

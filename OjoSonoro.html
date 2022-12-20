@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'/>
+    <script src='https://create3000.github.io/code/x_ite/latest/x_ite.min.js'></script>
+    <style> x3d-canvas { width: 400px; height: 200px;} </style>
+  </head>
+  <body>
+    <x3d-canvas>
+      <X3D profile='Immersive'>
+        <Scene>
+          <Viewpoint description = 'vista cerca' position ='0 0 5' orientation = '1 0 0 0' description = 'camera'></Viewpoint>
+          <Transform>
+            <Inline url='"x3d/Ojo.x3d"'></Inline>
+            <TouchSensor DEF='pulsador'></TouchSensor>
+            <Sound>
+              <AudioClip DEF='campana' url='"sonidos/chimes.wav"'></AudioClip>
+            </Sound>
+          </Transform>
+        <ROUTE fromNode='pulsador' fromField='touchTime' toNode='campana' toField='set_startTime'></ROUTE>
+        </Scene>
+      </X3D>
+    </x3d-canvas>
+  </body>
+</html>

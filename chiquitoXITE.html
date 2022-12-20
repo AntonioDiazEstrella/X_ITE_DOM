@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <script src='https://create3000.github.io/code/x_ite/latest/x_ite.min.js'></script>
+        <style> x3d-canvas { width: 400px; height: 200px;} </style>
+    </head>
+    <body>
+        <x3d-canvas>
+            <X3D profile='Immersive'>
+                <Scene>
+                    <Viewpoint description = 'vista cerca' position ='0 0 2' orientation = '1 0 0 0' description = 'camera'></Viewpoint>
+                    <Viewpoint description = 'vista lejos' position ='0 0 4' orientation = '1 0 0 0' description = 'camera'></Viewpoint>
+                    <!-------CABEZA----------------------------------->
+                    <Shape>
+                      <Appearance>
+                        <Material diffuseColor='1 0 0'></Material>
+                      </Appearance>
+                      <Sphere radius='0.5'></Sphere>
+                    </Shape>
+                
+                    <!--------CEJAS------------------------------------>
+                    <Transform translation='0 0.25 0.35'>
+                      <Shape>
+                        <Appearance>
+                          <Material diffuseColor='0.2 0.2 0.2'></Material>
+                        </Appearance>
+                        <Box size='0.6 0.05 0.2'></Box>
+                      </Shape>
+                    </Transform>
+                
+                
+                    <!---OJO IZQUIERDO---------------------------------->
+                    <Transform DEF='bola1' translation='0.1 0.15 0.38'>
+                      <Shape DEF='ojo'>
+                        <Appearance>
+                          <Material diffuseColor='1 1 1'></Material>
+                          <ImageTexture url = '"texturas/ojo.png"'></ImageTexture>
+                        </Appearance>
+                        <Sphere radius='0.09'></Sphere>
+                      </Shape>
+                    </Transform>
+                
+                    <!---OJO DERECHO-------------------------------------->
+                    <Transform DEF='bola2' translation='-0.1 0.15 0.38'>
+                      <Shape USE='ojo'/>
+                    </Transform>
+                
+                
+                    <!---NARIZ--------------------------------------------->
+                    <Transform translation='0 0 0.5'>
+                      <Shape>
+                        <Appearance>
+                          <Material diffuseColor = '1 0 1'></Material>
+                        </Appearance>
+                        <Sphere radius='0.09'></Sphere>
+                      </Shape>
+                    </Transform>
+                
+                    <!---BOCA----------------------------------------------->
+                    <Transform DEF='cilindro' rotation='1 0 0 2' scale='3 1 1' translation='0 -0.2 0.35'>
+                      <Shape>
+                        <Appearance>
+                          <Material diffuseColor='0 0 0'></Material>
+                        </Appearance>
+                        <Cylinder height='0.2' radius='0.05'/>
+                      </Shape>
+                      <TouchSensor DEF='boca'></TouchSensor>
+                      <Sound>
+                        <AudioClip DEF='grito' url='"sonidos/ataquerl.wav"'></AudioClip>
+                      </Sound>
+                    </Transform>
+                
+                
+                    <TimeSensor DEF='TimerOjos' loop='true'/>
+                    <TimeSensor DEF='TimerGrito' startTime='-1'/>
+                    <TimeSensor DEF='TimerSaltaOjos' startTime='-1'/>
+                
+                    <OrientationInterpolator DEF='Rot' key='0 0.25 0.5 0.75 1' 
+                                                  keyValue='1 0 0 0 
+                                                            1 0 0 0.5 
+                                                            1 0 0 0 
+                                                            1 0 0 -0.1 
+                                                            1 0 0 0'/>
+                    <PositionInterpolator DEF='abrirboca' key='0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1' 
+                                                  keyValue='1 1 1 
+                                                          2.5 1 2 
+                                                            2 1 0.5 
+                                                            2 1 2 
+                                                          2.5 1 1
+                                                            2 1 2 
+                                                          2.5 1 1 
+                                                            2 1 3 
+                                                            2 1 1 
+                                                            1 1 1 
+                                                            3 1 1'/>
+                    <PositionInterpolator DEF='salta' key='0 0.5 1' 
+                                                  keyValue='1 1 1
+                                                            2 2 2
+                                                            1 1 1'/>
+                
+                
+                    <!--MOVER LOS OJOS------------------------------------------------------------------------------->  
+                    <ROUTE fromNode='TimerOjos' fromField='fraction_changed' toNode='Rot' toField='set_fraction'></ROUTE>
+                    <ROUTE fromNode='Rot' fromField='value_changed' toNode='bola1' toField='set_rotation'></ROUTE>
+                    <ROUTE fromNode='Rot' fromField='value_changed' toNode='bola2' toField='set_rotation'></ROUTE>
+                    
+                    <!---AL TOCAR LA BOCA LA MUEVE-------------------------------------------------------------------->
+                    <ROUTE fromNode='boca' fromField='touchTime' toNode='TimerGrito' toField='set_startTime'></ROUTE>
+                    <ROUTE fromNode='TimerGrito' fromField='fraction_changed' toNode='abrirboca' toField='set_fraction'></ROUTE>
+                    <ROUTE fromNode='abrirboca' fromField='value_changed' toNode='cilindro' toField='set_scale'></ROUTE>
+                
+                    <!---AL TOCAR LA BOCA HABLA------------------------------------------------------------------------>
+                    <ROUTE fromNode='boca' fromField='touchTime' toNode='grito' toField='set_startTime'></ROUTE>
+                 
+                    <!---AL TOCAR LA BOCA SACA LOS OJOS----------------------------------------------------------------->
+                    <ROUTE fromNode='boca' fromField='touchTime' toNode='TimerSaltaOjos' toField='set_startTime'></ROUTE>
+                    <ROUTE fromNode='TimerSaltaOjos' fromField='fraction_changed' toNode='salta' toField='set_fraction'></ROUTE>
+                    <ROUTE fromNode='salta' fromField='value_changed' toNode='bola1' toField='set_scale'></ROUTE>
+                    <ROUTE fromNode='salta' fromField='value_changed' toNode='bola2' toField='set_scale'></ROUTE>
+                </Scene>
+            </X3D>
+        </x3d-canvas>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'/>
+    <script src='https://create3000.github.io/code/x_ite/latest/x_ite.min.js'></script>
+    <style> x3d-canvas { width: 400px; height: 200px;} </style>
+  </head>
+  <body>
+    <x3d-canvas>
+      <X3D profile='Immersive'>
+        <Scene>
+          <Viewpoint description = 'vista panoramica' position = '0 10 20' orientation = '1 0 0 -0.35'></Viewpoint>
+          <PointLight DEF='Luz' on='false' color = '0.8 0.8 0.0' location = '0 20 0'></PointLight>
+            <Shape>
+                <Appearance>
+                    <Material></Material>
+                </Appearance>
+                <Text string = '"Hola!"'></Text>
+            </Shape>
+            <Group>
+                <Shape>
+                    <Appearance>
+                        <Material diffuseColor = '1 1 1'></Material>
+                        <ImageTexture url = '"texturas/ojo.png"'></ImageTexture>
+                    </Appearance>
+                    <Sphere radius = '1'></Sphere>
+                </Shape>
+                <TouchSensor DEF='Pulsador' description='Pulsa para activar'></TouchSensor>
+            </Group>
+            <Transform translation='0 -1.25 0'>
+                <Shape>
+                  <Appearance> 
+                    <Material></Material>
+                  </Appearance>
+                  <Box size = '5 0.5 5'></Box>
+                </Shape>
+             </Transform>
+             
+             <Sound location='0 10 20'>
+                <AudioClip DEF='amanecer'  loop= 'false' url='"sonidos/ILoveJazz.mp3"'></AudioClip>
+            </Sound>
+
+            <ROUTE fromNode='Pulsador' fromField='isActive' toNode='Luz' toField='on'></ROUTE> 
+            <ROUTE fromNode='Pulsador' fromField='touchTime' toNode='amanecer' toField='set_startTime'></ROUTE>
+        </Scene>
+      </X3D>
+    </x3d-canvas>
+  </body>
+</html>
