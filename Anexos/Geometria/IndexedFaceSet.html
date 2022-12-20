@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <script src='https://create3000.github.io/code/x_ite/latest/x_ite.min.js'></script>
+        <style> x3d-canvas { width: 400px; height: 200px;} </style>
+    </head>
+    <body>
+        <x3d-canvas>
+            <X3D profile='Immersive'>
+                <Scene>
+                    <Shape>
+                        <Appearance>
+                           <Material diffuseColor = '1 0 0' ></Material>
+                        </Appearance>
+                        <IndexedFaceSet colorPerVertex='FALSE' solid='FALSE' coordIndex='	
+                                                0 1 2 3 -1 
+                                                4 5 6 7 -1 
+                                                0 3 5 6 -1 
+                                                3 2 4 5 -1 
+                                                6 7 1 0 -1'> 
+                            <Color color=
+                                                '1 0 0
+                                                 0 1 0
+                                                 0 0 1
+                                                 1 1 0
+                                                 1 0 1'>
+                            </Color> 
+                            <Coordinate point=
+                                                '-3 -2  2 
+                                                  3 -2  2 
+                                                  3  2  2 
+                                                 -3  2  2 
+                                                  3  2 -2 
+                                                 -3  2 -2 
+                                                 -3 -2 -2 
+                                                  3 -2 -2'>
+                            </Coordinate> 
+                        </IndexedFaceSet> 
+                     </Shape>
+                     <Background skyColor='0 0 0'></Background> 
+                </Scene>
+            </X3D>
+        </x3d-canvas>
+    </body>
+</html>
