@@ -1,0 +1,11 @@
+<X3D profile='Immersive'>
+    <Scene>
+        <Shape>
+            <Appearance><Material></Material></Appearance>
+            <Text DEF ='tecla' string='"1"'></Text>
+       </Shape>
+          
+       <StringSensor DEF='sensor' enabled= 'true'></StringSensor>
+       <ROUTE fromNode='sensor' fromField='keyPress' toNode='tecla' toField='string'></ROUTE>
+    </Scene>
+</X3D>

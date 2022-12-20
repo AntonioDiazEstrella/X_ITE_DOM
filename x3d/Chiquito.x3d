@@ -1,0 +1,13 @@
+<X3D profile='Immersive'>
+    <Scene>
+        <Viewpoint position = '0 0 3' orientation = '1 0 0 0' description = 'camara'></Viewpoint>
+        <Shape>
+           <Appearance>
+                <!--<Material diffuseColor = '1 0 0'></Material>-->    
+                <MovieTexture url = '"../texturas/chiquitomudo.mp4"' startTime='0.0' loop = 'true'></MovieTexture>
+           </Appearance>
+           <Box size = '1 1 1'></Box>
+        </Shape>
+        <Background skyColor = '1 1 0'></Background> 
+    </Scene>
+</X3D>

@@ -1,0 +1,11 @@
+<X3D profile='Immersive'>
+    <Scene>
+     <Shape>
+        <Appearance>
+          <Material diffuseColor= '1 1 1'></Material>
+          <ImageTexture url='"../texturas/ojo.png"'></ImageTexture>
+        </Appearance>
+        <Sphere radius = '1'></Sphere>
+     </Shape>
+    </Scene>
+  </X3D>
