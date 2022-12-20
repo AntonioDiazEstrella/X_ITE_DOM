@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <script src='https://create3000.github.io/code/x_ite/latest/x_ite.min.js'></script>
+        <style> x3d-canvas { width: 400px; height: 200px;} </style>
+    </head>
+    <body>
+        <x3d-canvas>
+            <X3D profile='Immersive'>
+                <Scene>
+                    <Viewpoint position='0 0 5' orientation='1 0 0 0' description='camara'></Viewpoint>
+                    <Transform rotation ='1 0 0 0.35'>
+                        <Transform rotation ='0 1 0 0.35'>
+                            <Shape>
+                                <Appearance>
+                                    <Material></Material>
+                                    <ImageTexture url='"../../texturas/ojo.png"' repeatS='true' repeatT='true'></ImageTexture>
+                                    <TextureTransform 
+                                        center='0 0' 
+                                        translation='0 0' 
+                                        rotation='0.35' 
+                                        scale='2 2'>
+                                    </TextureTransform>
+                                </Appearance>
+                                <Box></Box>
+                            </Shape>
+                        </Transform>
+                    </Transform>
+                    <Background skyColor='1 1 1'></Background> 
+                </Scene>
+            </X3D>
+        </x3d-canvas>
+    </body>
+</html>

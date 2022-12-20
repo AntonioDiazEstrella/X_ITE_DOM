@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <script src='https://create3000.github.io/code/x_ite/latest/x_ite.min.js'></script>
+        <style> x3d-canvas { width: 400px; height: 200px;} </style>
+    </head>
+    <body>
+        <x3d-canvas>
+            <X3D profile='Immersive'>
+                <Scene>
+                    <Viewpoint position = '0 0 3' orientation = '1 0 0 0' description = 'camara'></Viewpoint>
+                    <Shape>
+                       <Appearance>
+                            <!--<Material diffuseColor = '1 0 0'></Material>-->    
+                            <!--<MovieTexture url = '"../texturas/chiquito.gif"' startTime='0.0' loop = 'true'></MovieTexture>-->
+                            <MovieTexture url = '"../../texturas/chiquitomudo.mp4"' startTime='0.0' loop = 'true'></MovieTexture>
+                        </Appearance>
+                       <Box size = '1 1 1'></Box>
+                    </Shape>
+                    <Background skyColor = '1 1 0'></Background> 
+                </Scene>
+            </X3D>
+        </x3d-canvas>
+    </body>
+</html>
