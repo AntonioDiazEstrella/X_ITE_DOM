@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <script src='https://create3000.github.io/code/x_ite/latest/x_ite.min.js'></script>
+        <style> x3d-canvas { width: 200px; height: 200px;} </style>
+    </head>
+    <body>
+        <x3d-canvas>
+            <X3D profile='Immersive'>
+                <Scene>
+                    <NavigationInfo headlight='true' type='"EXAMINE"'></NavigationInfo>
+                    <Viewpoint position='0 5 15' orientation='1 0 0 -0.46917'></Viewpoint>
+                    <DirectionalLight DEF='directional' direction='0 -1 0' on ='false' color='1 0 0' intensity='0.3'></DirectionalLight>
+                    <PointLight DEF='point' on='false' intensity='1.0' color='0 1 0' location='0 10 0'></PointLight>
+                   
+                    <Group>
+                      <Shape>
+                          <Appearance><Material diffuseColor='1 0 1'></Material></Appearance>
+                          <Sphere radius ='0.3'></Sphere>
+                      </Shape>
+                      <TouchSensor DEF='TOUCH' description='toca para activar'></TouchSensor>
+                    </Group>
+                    
+                    <Transform translation='0 -5.0 0' >
+                        <Shape>
+                            <Appearance><Material diffuseColor='0.8 0.8 0.8'></Material></Appearance>
+                            <Box size ='4 4 4'></Box>
+                        </Shape>
+                    </Transform>
+
+                    <ROUTE fromNode='TOUCH' fromField='isOver' toNode='directional' toField='on'></ROUTE>
+                    <ROUTE fromNode='TOUCH' fromField='isActive' toNode='point' toField='on'></ROUTE> 
+                    
+                    <Background  skyColor='1 1 1'></Background>		
+                </Scene>
+            </X3D>
+        </x3d-canvas>
+    </body>
+</html>
