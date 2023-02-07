@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<X3D profile='Immersive'>
+    <Scene>
+        <Viewpoint position= '  0   0 10' orientation= '1 0 0     0' description= 'frente'></Viewpoint>
+        <Viewpoint position= '-10   0  0' orientation= '0 1 0 -1.57' description= 'izquierda'></Viewpoint>
+        <Viewpoint position= ' 10   0  0' orientation= '0 1 0  1.57' description= 'derecha'></Viewpoint>
+        <Viewpoint position= '  0  10  0' orientation= '1 0 0 -1.57' description= 'arriba'></Viewpoint>
+        <Viewpoint position= '  0 -10  0' orientation= '1 0 0  1.57' description= 'abajo'></Viewpoint>
+        <Shape>
+            <Appearance>
+                <Material diffuseColor= '1 0 0'></Material>
+            </Appearance>
+            <Sphere radius= '1'></Sphere>
+        </Shape>
+        <Transform translation='0 -2 0'>
+            <Shape>
+                <Appearance> 
+                    <Material></Material>
+                </Appearance>
+                <Box></Box>
+            </Shape>
+        </Transform>
+        <Background skyColor='1 1 1'></Background>
+    </Scene>
+</X3D>
