@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <script src='https://create3000.github.io/code/x_ite/latest/x_ite.min.js'></script>
+        <style> x3d-canvas { width: 200px; height: 400px;} </style>
+    </head>
+    <body>
+        <x3d-canvas>
+            <X3D profile='Immersive'>
+                <Scene>
+
+                    <!----Al tocar la caja gira durante un ciclo-->
+                    <Transform DEF='CajaGirando1' translation = '0 3 0'>
+                        <TouchSensor DEF='Touch1' description='toca para activar'></TouchSensor> 
+                        <Shape DEF='Caja'>
+                            <Appearance>
+                                <Material diffuseColor= '1 0 0'></Material>
+                            </Appearance>
+                           <Box></Box>
+                        </Shape>
+                    </Transform>
+
+                    <!-- Al tocar la caja gira continuamente -->
+                    <Transform DEF='CajaGirando2'>
+                        <TouchSensor DEF='Touch2' description='toca para activar'></TouchSensor> 
+                        <Shape USE= 'Caja'></Shape>
+                    </Transform>
+
+                     <!-- Al tocar la caja que esta girando esta se para -->
+                     <Transform DEF='CajaGirando3' translation = '0 -3 0' >
+                        <TouchSensor DEF='Touch3' description='toca para activar'></TouchSensor> 
+                        <Shape USE= 'Caja'></Shape>
+                    </Transform>
+                    
+                    <TimeSensor DEF = 'Timer1' cycleInterval='2' loop='false'> </TimeSensor>
+                    <TimeSensor DEF = 'Timer2' cycleInterval='2' loop='true' stopTime = '1'></TimeSensor>
+                    <TimeSensor DEF = 'Timer3' cycleInterval='2' loop='true'></TimeSensor>
+
+                    <OrientationInterpolator DEF='Rotacion1' 
+                        key= '0 0.25 0.5 0.75 1'
+                        keyValue= ' 0 1 0 0 
+                                    0 1 0 1.57 
+                                    0 1 0 3.1415 
+                                    0 1 0 -1.57 
+                                    0 1 0 0'>
+                    </OrientationInterpolator>
+
+                    <OrientationInterpolator DEF ='Rotacion2' 
+                        key= '0 0.25 0.5 0.75 1'
+                        keyValue= ' 0 1 0 0 
+                                    0 1 0 1.57 
+                                    0 1 0 3.1415 
+                                    0 1 0 -1.57 
+                                    0 1 0 0'>
+                    </OrientationInterpolator>
+
+                    <OrientationInterpolator DEF ='Rotacion3' 
+                        key= '0 0.25 0.5 0.75 1'
+                        keyValue= ' 0 1 0 0 
+                                    0 1 0 1.57 
+                                    0 1 0 3.1415 
+                                    0 1 0 -1.57 
+                                    0 1 0 0'>
+                    </OrientationInterpolator>
+                   
+                    <ROUTE fromNode='Touch1' fromField='touchTime' toNode='Timer1' toField='startTime'></ROUTE>
+                    <ROUTE fromNode='Timer1' fromField='fraction_changed' toNode='Rotacion1' toField='set_fraction'> </ROUTE>
+                    <ROUTE fromNode='Rotacion1' fromField='value_changed' toNode='CajaGirando1' toField='set_rotation'> </ROUTE>
+
+                    <ROUTE fromNode='Touch2' fromField='touchTime' toNode='Timer2' toField='startTime'></ROUTE>
+                    <ROUTE fromNode='Timer2' fromField='fraction_changed' toNode='Rotacion2' toField='set_fraction'> </ROUTE>
+                    <ROUTE fromNode='Rotacion2' fromField='value_changed' toNode='CajaGirando2' toField='set_rotation'> </ROUTE>
+
+                    <ROUTE fromNode='Touch3' fromField='touchTime' toNode='Timer3' toField='stopTime'></ROUTE>
+                    <ROUTE fromNode='Timer3' fromField='fraction_changed' toNode='Rotacion3' toField='set_fraction'> </ROUTE>
+                    <ROUTE fromNode='Rotacion3' fromField='value_changed' toNode='CajaGirando3' toField='set_rotation'> </ROUTE>
+
+                    <Background skyColor='1 1 1'></Background> 	
+                </Scene>
+            </X3D>
+        </x3d-canvas>
+    </body>
+</html>
