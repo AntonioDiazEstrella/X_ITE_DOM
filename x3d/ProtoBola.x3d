@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<X3D profile='Immersive'> 
+    <Scene>
+        <ProtoDeclare name="Bola">
+            <!--Declaracion de la interfaz-->
+            <ProtoInterface>
+                <field accessType='initializeOnly' name='Radio'    type='SFFloat' value='1.0'></field>
+                <field accessType='initializeOnly' name='Color'    type='SFColor' value='1.0 0.0 0.0'></field>
+                <field accessType='initializeOnly' name='Posicion' type='SFVec3f' value='0.0 0.0 0.0'></field>
+            </ProtoInterface>
+            <!--Declaracion del cuerpo-->
+            <ProtoBody>
+                <Transform>
+                    <IS><connect nodeField="translation" protoField="Posicion"></connect></IS>				
+                    <Shape>
+                        <Appearance>
+                            <Material>
+                                <IS><connect nodeField="diffuseColor" protoField="Color"></connect></IS>
+                            </Material>
+                        </Appearance>
+                        <Sphere>
+                            <IS><connect nodeField='radius' protoField='Radio'></connect></IS>
+                        </Sphere>
+                    </Shape>
+                </Transform>
+            </ProtoBody>
+        </ProtoDeclare>
+                
+        <!--Instancias del nuevo nodo-->
+        <Bola Radio = '0.1' Color = '0.2 0.2 0.2' Posicion = '-2.0 0.0 0.0'></Bola>
+        <Bola Radio = '0.2' Color = '0.0 0.0 1.0' Posicion = '-1.5 0.0 0.0'></Bola> 
+        <Bola Radio = '0.3' Color = '0.0 1.0 0.0' Posicion = '-1 0.0 0.0'></Bola> 
+        <Bola Radio = '0.4' Color = '0.0 1.0 1.0' Posicion = '-0.5 0.0 0.0'></Bola> 
+        <Bola Radio = '0.5' Color = '1.0 0.0 0.0' Posicion = '0 0.0 0.0'></Bola> 
+        <Bola Radio = '0.6' Color = '1.0 0.0 1.0' Posicion = '0.5 0.0 0.0'></Bola> 
+        <Bola Radio = '0.7' Color = '1.0 1.0 0.0' Posicion = '1.0 0.0 0.0'></Bola> 
+        <Bola Radio = '0.8' Color = '1.0 1.0 1.0' Posicion = '1.5 0.0 0.0'></Bola> 
+                
+    </Scene>
+</X3D>
+
+			
+		
