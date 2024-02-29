@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<X3D profile="Immersive" version="3.0">
+    <Scene>
+            <Shape> 
+                <Appearance> 
+                    <Material  DEF= 'colorido'></Material> 
+                </Appearance>
+                <Cylinder></Cylinder> 
+            </Shape> 
+        <EXPORT localDEF='colorido' AS='Col'></EXPORT>
+    </Scene>
+</X3D>
